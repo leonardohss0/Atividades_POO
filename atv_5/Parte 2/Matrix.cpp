@@ -39,7 +39,6 @@ Matrix::Matrix(ifstream &myFile) {
 
 Matrix::Matrix(const Matrix &M)
 {
-
     this->nRows = M.nRows;
     this->nCols = M.nCols;
 
