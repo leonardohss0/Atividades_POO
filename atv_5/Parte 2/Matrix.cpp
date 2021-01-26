@@ -4,13 +4,6 @@
 
 using namespace std;
 
-// contrutor default - cria uma matriz vazia com nRows = nCols = 0
-Matrix::Matrix()
-{
-    nRows = 0.0;
-    nCols = 0.0;
-    m = NULL;
-}
 
 Matrix::Matrix(int rows, int cols, const double &value)
 {
@@ -27,38 +20,22 @@ Matrix::Matrix(int rows, int cols, const double &value)
         }
     }
 }
-/*
-Matrix::Matrix(std::ifstream &myFile)
-{
-    while (!myFile.eof())
-    {
 
-        std::string data;
-        getline(myFile, data);
+Matrix::Matrix(ifstream &myFile) {
+    int fRows = 0, fCols = 0;
+    myFile >> fRows >> fCols;
+    
+    this->nRows = fRows;
+    this->nCols = fCols;
+    this->m = new double *[fRows];
 
-        nRows = (int)data[0] - 48;
-        nCols = (int)data[2] - 48;
-
-        m = new double *[nRows];
-        for (int i = 0; i < nRows; i++)
-        {
-            m[i] = new double[nCols];
-        }
-
-        std::string aux;
-
-        for (int j = 0; j < nRows; j++)
-        {
-            int val = 0;
-            getline(myFile, aux);
-            for (int k = 0; k < nCols; k++)
-            {
-                m[j][k] = (double)aux[val] - 48.0;
-                val = val + 2;
-            }
-        }
+    for (int i = 0; i < fRows; ++i){
+        this->m[i] = new double[fCols];
+        for (int j = 0; j < fCols; ++j) {
+            myFile >> this->m[i][j];
+        }       
     }
-}*/
+}
 
 Matrix::Matrix(const Matrix &M)
 {
@@ -313,115 +290,32 @@ double &Matrix::operator()(int i, int j) const
     return this->m[i][j];
 }
 
-/*
-std::ostream& operator<< (std::ostream& op, const Matrix &M){
-    for(int i = 0; i < M.nRows; i++){
-        for(int j = 0; j < M.nCols; j++){
-            op << M.m[i][j] << ' ';
-        }
-        op << std::endl;
-    }
-    return op;
+double Matrix::getZeroBased(int row, int col) const {
+    return this->m[row][col];
 }
 
-std::istream& operator>>(std::istream &op, Matrix &M)
-{
-    for (int i = 0; i < M.getRows(); i++)
-    {
-        delete[] M.m[i];
-    }
-    delete[] M.m;
-
-    std::cout << "\nDigite o numero de linhas: " << std::endl;
-    op >> M.nRows;
-    std::cout << "\nDigite o numero de colunas: " << std::endl;
-    op >> M.nCols;
-
-    std::cout << "\nDigite os valores: " << std::endl;
-    M.m = new double *[M.nRows];
-    for (int i = 0; i < M.nRows; i++)
-    {
-        M.m[i] = new double[M.nCols];
-        for (int j = 0; j < M.nCols; j++)
-        {
-            op >> M.m[i][j];
-        }
-    }
-
-    return op;
+void Matrix::setValue(int row, int column, double value) {
+    this->m[row][column] = value;
 }
 
-
-Matrix::Matrix(std::ifstream &myFile){
-    while (!myFile.eof()){
-        
-        //armazena em uma string a primeira linha do arquivo, que contem o numero de linhas e colunas da matriz
-        std::string data; 
-        getline(myFile,data);
-
-        nRows = (int)data[0] - 48;
-        nCols = (int)data[2] - 48;
-
-        m = new double * [nRows];
-        for (int i = 0; i < nRows; i++){
-            m[i] = new double [nCols];
+std::ostream &operator<< (std::ostream &output, const Matrix &A) {
+    for (int i = 0; i < A.getRows(); ++i) {
+        for (int j = 0; j < A.getCols(); ++j) {
+            output << A.getZeroBased(i, j) << " ";
         }
+        output << std::endl;
+    }
+    return output;
+}
 
-        std::string aux;
-            
-        for( int j = 0; j < nRows; j++){
-            int val = 0;
-            getline(myFile, aux);
-            for( int k = 0; k < nCols; k++){
-                   m[j][k] = (double)aux[val] - 48.0;
-                   val = val + 2;
-            }
+std::istream &operator>> (std::istream &input, Matrix &A) {
+    double value = 0;
+
+    for (int i = 0; i < A.getRows(); ++i) {
+        for (int j = 0; j < A.getCols(); ++j) {
+            input >> value;
+            A.setValue(i, j, value);
         }
     }
-}*/
-
-int main()
-{
-    ifstream in("myMatrix.txt");
-    //Matrix Y;
-    Matrix X(3, 1), A(3, 3), C(3, 3);
-    Matrix Z(3, 2, 7.0);
-    //Matrix W(in);
-
-    // operadores a serem implementados em sua classe:
-
-    A(2, 1) = 10; // altera o valor de uma posição de A
-    C = A + A;    // Soma
-    C.print();
-
-    C -= A; // Subtração
-    C.print();
-
-    A = C - A; // Subtração
-    A.print();
-
-    A += A; // Soma
-    A.print();
-
-    A = ~C; // A é igual a transposta de C
-    A.print();
-
-    X *= 2; // multiplicação por uma constante
-    X.print();
-
-    C = A * X; // multiplicação de matrizes
-    C.print();
-
-    C *= X; // multiplicação de matrizes
-    C.print();
-
-    /*
-    if (A == C)                // verifica a igualdade entre A e C
-        if (X != Y)            // verifica a desigualdade entre A e C
-            cout << Z << endl; // impressão de matrizes
-
-    //cin >> W; // leitura de dados para dentro da matriz Y
-    */
-
-    return 0;
+    return input;
 }
