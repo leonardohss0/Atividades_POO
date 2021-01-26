@@ -3,12 +3,11 @@
 
 #include <string>
 
-
 class Exception {
-    std::string error;
+  std::string error;
 
-    public:
-        Exception(std::string s) : error(s) {};
-        std::string getError() { return this->error; };
+public:
+  Exception(std::string s) : error(s){};
+  std::string getError() { return this->error; };
 };
 #endif
