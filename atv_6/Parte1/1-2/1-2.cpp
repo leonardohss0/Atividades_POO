@@ -2,6 +2,7 @@
 #include <cstdlib> // system()
 using namespace std;
 #include "Lista/Lista.hpp"
+#include "Lista/Exception.hpp"
 
 void clearscreen() {
 if (system( "clear" )) system( "cls" );
@@ -43,9 +44,17 @@ int main(int argc, char *argv[])
     tam = A.size();
     cout << "tam = A.size" << endl;
     cout << "-> tamanho da Lista A = " << tam << endl << endl;
-     
+    
+    A.clear();
+    try {
+        A.erase(1);
+    } catch (Exception &e) {
+        std::cout << e.getError() << std::endl;
+    }
+    
+
     cout << "\nPressione qualquer tecla para continuar...";
     getchar();
     clearscreen();
-    
+    A.clear();
 }

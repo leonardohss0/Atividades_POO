@@ -1,6 +1,7 @@
 #ifndef LIST_H_
 #define LIST_H_
 #include <iostream>
+#include "Exception.hpp"
 using namespace std;
 
 /* essas declaracoes sao necessarias */
@@ -84,8 +85,7 @@ List<T>::~List(){
 }
 
 // construtor de copia
-template<class T> 
-List<T>::List(const List<T> &L){
+template<class T> List<T>::List(const List<T> &L){
     *this = L;
 }
 
@@ -217,7 +217,7 @@ void List<T>::erase(const T &value){
         }
     }
     else
-        cerr << "Lista Vazia! Impossivel remover o elemento da Lista." << endl;    
+        throw Exception("Lista Vazia!");    
 }
 
 // sobrecarga do operador de atribuição
