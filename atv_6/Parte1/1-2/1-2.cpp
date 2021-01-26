@@ -35,7 +35,9 @@ int main(int argc, char *argv[])
     cout << "-> Lista A " << A << endl;
     
     // remove os elementos de valor igual a 6 existentes na lista 
-    A.erase(6);
+    try {
+        A.erase(6);
+    } catch (Exception &e) { std::cout << e.getError() << std::endl; }
     cout << "A.erase(6)" << endl;
     cout << "-> Lista A " << A << endl;
     
@@ -48,13 +50,9 @@ int main(int argc, char *argv[])
     A.clear();
     try {
         A.erase(1);
-    } catch (Exception &e) {
-        std::cout << e.getError() << std::endl;
-    }
-    
+    } catch (Exception &e) { std::cout << e.getError() << std::endl; }
 
     cout << "\nPressione qualquer tecla para continuar...";
     getchar();
     clearscreen();
-    A.clear();
 }

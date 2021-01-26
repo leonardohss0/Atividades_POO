@@ -198,7 +198,7 @@ Node<T>* List<T>::erase(Node<T> *it){
         }
     }
     else
-        cerr << "Impossivel remover o elemento da Lista." << endl;    
+        throw Exception("Impossivel remover o elemento da Lista.");    
 }
 
 
