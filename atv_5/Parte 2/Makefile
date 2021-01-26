@@ -11,6 +11,9 @@ build: main
 main: $(FILE)
 	@$(CC) $(FLAGS) $(FLAGS1) $^ $(INCLUDE) -o main.out
 
+run: 
+	@./main.out
+
 clean:
 	@rm *.out
 	@echo "Cleaned up successfully :)"
