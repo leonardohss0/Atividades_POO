@@ -2,8 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-using namespace std;
-
 
 Matrix::Matrix(int rows, int cols, const double &value)
 {
@@ -21,7 +19,7 @@ Matrix::Matrix(int rows, int cols, const double &value)
     }
 }
 
-Matrix::Matrix(ifstream &myFile) {
+Matrix::Matrix(std::ifstream &myFile) {
     int fRows = 0, fCols = 0;
     myFile >> fRows >> fCols;
     
