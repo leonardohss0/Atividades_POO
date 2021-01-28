@@ -1,10 +1,13 @@
 #include <iostream>
 
-long fib(int num) {
+template <typename T>
+long fib(T num)
+{
   long previous = 1;
   long result = 1;
   long temp = 0;
-  for (int i = 1; i < num; ++i) {
+  for (int i = 1; i < num; ++i)
+  {
     temp = previous;
     previous = result;
     result = temp + result;
@@ -12,7 +15,8 @@ long fib(int num) {
   return result;
 }
 
-int main() {
+int main()
+{
 
   std::cout << "Insira o indice(inicia em 0) do numero desejado da seq. de "
                "fibonacci: "
@@ -20,6 +24,7 @@ int main() {
 
   int num;
   std::cin >> num;
+  fflush(stdin);
 
   std::cout << fib(num) << std::endl;
 
