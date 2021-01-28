@@ -28,7 +28,7 @@ class Matrix {
         // overloaded operators
         double& operator() (int i, int j);
         Matrix operator+ (const Matrix& C) const;
-        Matrix operator* (const Matrix& A) const;;
+        Matrix operator* (const Matrix& A) const;
         Matrix operator- (const Matrix& A) const;
         bool operator== (const Matrix& A) const;
         bool operator!= (const Matrix& A) const;
