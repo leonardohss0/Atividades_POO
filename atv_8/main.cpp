@@ -1,23 +1,26 @@
 #include <iostream>
 #include <ctime>
-#include "agenda.hpp"
+#include "./headers/Agenda.hpp"
 
 int main()
 {
-    /*
-    srand((unsigned int) time (NULL)); //activates the generator
-    //...
-    int a = rand()%10;        //gives a random from 0 to 9
+  int number;
+  srand(time(NULL));
 
-    double r = ((double) rand() / (RAND_MAX));        //gives a random from 0 to 1
+  std::cout << "Hi Alexa, please, add some contacts to my agenda" << std::endl;
+  std::cout << "Sure Luiz, please, tell me, how many people do you want to add?" << std::endl;
+  std::cin >> number;
+  fflush(stdin);
+  
+  Agenda a(number);
+  
+  std::cout << "Numero de amigos na lista: " << a.contaAmigos() << std::endl;
+  std::cout << "Numero de conhecidos na lista: " << a.contaConhecidos() << std::endl;
 
-    int max, min;
-    //...
-    int c = (rand()%(max - min)) + min;              //gives a random from min to max
-    //...*/
+  a.addInformacoes();
 
-    Pessoa p1("Leonardo", 21);
-    p1.print();
+  a.imprimeAniversarios();
+  a.imprimeEmail();
 
-    return 0;
+  return 0;
 }

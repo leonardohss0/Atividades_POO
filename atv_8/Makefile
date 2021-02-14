@@ -1,6 +1,6 @@
 CC=g++
 FILE=main.cpp
-INCLUDE=
+INCLUDE=Agenda.cpp Amigo.cpp Pessoa.cpp Conhecido.cpp
 
 FLAGS=-fsanitize=address,undefined -O1 -fno-omit-frame-pointer -g -Wall -Wshadow -std=c++17 -Wno-unused-result 
 FLAGS1=-Wno-sign-compare -Wno-char-subscripts
