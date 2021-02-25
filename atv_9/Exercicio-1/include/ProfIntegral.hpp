@@ -8,7 +8,7 @@ class ProfIntegral : public Professor {
     double salarioMensal;
 
 public:
-    ProfIntegral(std::string n, double sm);
+    ProfIntegral(std::string n, double sm=0);
     double getSalario() const override;
     virtual ~ProfIntegral() {};
 };

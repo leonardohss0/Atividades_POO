@@ -9,7 +9,7 @@ class ProfHorista : public Professor {
     double valorHora;
 
 public:
-    ProfHorista(std::string n, double nht, double vh);
+    ProfHorista(std::string n, double nht=0, double vh=0);
     double getSalario() const override;
     virtual ~ProfHorista(){};
 };
