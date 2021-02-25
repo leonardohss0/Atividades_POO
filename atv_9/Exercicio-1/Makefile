@@ -1,6 +1,6 @@
 CC=g++
 FILE=main.cpp
-INCLUDE=./src/ProfHorista.cpp ./src/ProfIntegral.cpp
+INCLUDE=./src/*
 HEADERS=./include
 
 FLAGS=-fsanitize=address,undefined -O1 -fno-omit-frame-pointer -g -Wall -Wshadow -std=c++17 -Wno-unused-result 
