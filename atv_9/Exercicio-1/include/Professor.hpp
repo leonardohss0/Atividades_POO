@@ -8,9 +8,9 @@ class Professor {
 
 public:
     Professor(std::string n) : nome(n){};
-    inline std::string getName() const { return this->nome; };
+    std::string getName() const { return this->nome; };
     virtual double getSalario() = 0;
-    virtual ~Professor();
+    virtual ~Professor(){};
 };
 
 #endif
