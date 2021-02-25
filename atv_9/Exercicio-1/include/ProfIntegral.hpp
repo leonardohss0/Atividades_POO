@@ -9,7 +9,7 @@ class ProfIntegral : public Professor {
 
 public:
     ProfIntegral(std::string n, double sm);
-    double getSalario();
+    inline double getSalario() const { return this->salarioMensal; };
     virtual ~ProfIntegral() {}
 };
 
