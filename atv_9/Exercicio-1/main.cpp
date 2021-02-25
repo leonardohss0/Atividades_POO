@@ -8,14 +8,16 @@
 #include "Universidade.hpp"
 
 int main() {
-    
+
     Universidade uni = Universidade();
 
-    uni.addProfessor("Luiz", 7200.37); // Professor integral
-    uni.addProfessor("Leonardo", 200, 45); // Professores horistas
-    uni.addProfessor("Kyoshi", 160, 50); // Professores horistas
+    std::shared_ptr<ProfHorista> kyoshi(new ProfHorista("Kyoshi", 160, 50));
     
+    uni.addProfessor("Luiz", 7200.37);     // Professor integral
+    uni.addProfessor("Leonardo", 200, 45); // Professores horistas
+    uni.addProfessor(kyoshi);              // Professores horistas
+
     uni.listaProf_Salario();
-    std::cout << "TOTAL PAGO MENSALMENTE AOS PROFESSORES: " 
+    std::cout << "TOTAL PAGO MENSALMENTE AOS PROFESSORES: "
               << uni.totalPago() << std::endl;
 }
