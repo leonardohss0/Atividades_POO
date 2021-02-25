@@ -10,8 +10,10 @@ private:
 
 public:
     Universidade(double s = 0);
-    void addProfessor(std::string n, double sm = 0);
-    void addProfessor(std::string n, double nht = 0, double vh = 0);
+    ~Universidade();
+    void addProfessor(std::string n, double sm);
+    void addProfessor(std::string n, double nht, double vh);
+    void addProfessor(Professor *t);
     double totalPago() const;
     void listaProf_Salario() const;
 };

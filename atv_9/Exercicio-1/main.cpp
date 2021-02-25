@@ -5,13 +5,17 @@
 
 #include "ProfHorista.hpp"
 #include "ProfIntegral.hpp"
+#include "Universidade.hpp"
 
 int main() {
-    std::string name1 = "Luiz";
-    std::string name2 = "Leonardo";
-    ProfHorista prof1(name1, 160, 45);
-    ProfIntegral prof2(name2, 7000);
+    
+    Universidade uni = Universidade();
 
-    std::cout << prof1.getName() << " " << prof1.getSalario() << std::endl;
-    std::cout << prof2.getName() << " " << prof2.getSalario() << std::endl;
+    uni.addProfessor("Luiz", 7200.37); // Professor integral
+    uni.addProfessor("Leonardo", 200, 45); // Professores horistas
+    uni.addProfessor("Kyoshi", 160, 50); // Professores horistas
+    
+    uni.listaProf_Salario();
+    std::cout << "TOTAL PAGO MENSALMENTE AOS PROFESSORES: " 
+              << uni.totalPago() << std::endl;
 }
