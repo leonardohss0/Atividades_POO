@@ -10,8 +10,8 @@ class ProfHorista : public Professor {
 
 public:
     ProfHorista(std::string n, double nht, double vh);
-    double getSalario() const;
-    virtual ~ProfHorista() {};
+    double getSalario() const override;
+    virtual ~ProfHorista(){};
 };
 
 #endif

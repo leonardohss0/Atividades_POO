@@ -9,7 +9,7 @@ class Professor {
 public:
     Professor(std::string n) : nome(n){};
     std::string getName() const { return this->nome; };
-    virtual double getSalario() = 0;
+    virtual double getSalario() const = 0;
     virtual ~Professor(){};
 };
 
