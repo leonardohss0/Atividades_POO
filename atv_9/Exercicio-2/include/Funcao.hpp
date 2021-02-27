@@ -6,7 +6,7 @@ public:
     //funcao que obtem a integral da funcao pela regra do trapezio
     double getIntegral(double limiteInferior, double limiteSuperior, double intervalos) {
 
-        double delta_x, result, b_menor, b_maior;
+        double delta_x, b_menor, b_maior, result = 0;
 
         delta_x = (limiteSuperior - limiteInferior) / intervalos;
 
