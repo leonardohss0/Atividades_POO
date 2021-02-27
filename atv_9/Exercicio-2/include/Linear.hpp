@@ -6,9 +6,10 @@
 class Linear : public Funcao {
     int a, b;
 
-    public:
-        Linear(int a, int b) : a(a), b(b) { };
-        double func(double input) override;
+public:
+    Linear(int aa, int bb) : a(aa), b(bb){};
+    ~Linear();
+    double func(double input) override;
 };
 
 #endif

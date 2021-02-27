@@ -6,9 +6,10 @@
 class Quadratica : public Funcao {
     int a, b, c;
 
-    public:
-        Quadratica(int a, int b, int c) : a(a), b(b), c(c) { } ;
-        double func(double input) override;
+public:
+    Quadratica(int aa, int bb, int cc) : a(aa), b(bb), c(cc){};
+    ~Quadratica(){};
+    double func(double input) override;
 };
 
 #endif

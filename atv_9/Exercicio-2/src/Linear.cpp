@@ -1,6 +1,5 @@
-#include <iostream>
+#include "../include/Linear.hpp"
 
 double Linear::func(double input) {
-    return a*input + b; 
-
+    return this->a * input + this->b;
 }
