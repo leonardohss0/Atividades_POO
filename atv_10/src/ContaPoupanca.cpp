@@ -20,3 +20,12 @@ void ContaPoupanca ::tiraExtrato() const {
               << "Saldo: " << this->getSaldo() << std::endl
               << "Taxa de Rendimento: " << this->getTaxaRendimento() << std::endl;
 };
+
+int ContaPoupanca::getNextID() {
+    srand(time(NULL));
+    int new_id = rand() % 1000 + 1;
+    while (usedIds[new_id] == true)
+        new_id = rand() % 1000 + 1;
+    usedIds[new_id] = true;
+    return new_id;
+}

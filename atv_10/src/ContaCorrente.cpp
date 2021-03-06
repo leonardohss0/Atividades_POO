@@ -1,6 +1,6 @@
 #include "../include/ContaCorrente.hpp"
 
-std::map<int, bool> ContaPoupanca::usedIds;
+std::map<int, bool> ContaCorrente::usedIds;
 
 void ContaCorrente::saca(double valor) {
 

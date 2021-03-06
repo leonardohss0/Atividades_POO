@@ -32,6 +32,10 @@ int main() {
             std::cout << "Escolha do tipo de conta invalida" << std::endl;
         }
     }
+
+    for (auto i : contasVec) {
+        delete i;
+    }
     // após as contas terem sido criadas, informe a taxa de rendimento de cada ContaPoupanca armazenada.
     // realize saques, depósitos e extratos nestas contas.
     // imprima a quantidade de transações realizadas nas contas correntes e as taxas de rendimento das contas poupança.

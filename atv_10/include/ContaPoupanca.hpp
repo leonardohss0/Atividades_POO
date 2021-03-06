@@ -12,6 +12,7 @@ class ContaPoupanca : public ContaBancaria {
 
 public:
     ContaPoupanca(std::string pw, double taxa = 2.5) : ContaBancaria(pw, this->getNextID()), taxaRendimento(taxa){};
+    virtual ~ContaPoupanca(){};
 
     inline double getTaxaRendimento() const { return this->taxaRendimento; }
 

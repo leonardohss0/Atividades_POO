@@ -12,6 +12,7 @@ class ContaCorrente : public ContaBancaria {
 
 public:
     ContaCorrente(std::string pw) : ContaBancaria(pw, this->getNextID()), quantidadeTransacoes(0){};
+    virtual ~ContaCorrente() {};
 
     inline int getQuantTransacoes() const { return this->quantidadeTransacoes; };
 
