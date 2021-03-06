@@ -5,13 +5,10 @@
 
 class ContaCorrente : public ContaBancaria {
     int quantidadeTransacoes;
-
-    static std::map<int, bool> usedIds;
-
-    int getNextID();
+    static int lastID;
 
 public:
-    ContaCorrente(std::string pw) : ContaBancaria(pw, this->getNextID()), quantidadeTransacoes(0){};
+    ContaCorrente(std::string pw) : ContaBancaria(pw, this->lastID++), quantidadeTransacoes(0){};
     virtual ~ContaCorrente() {};
 
     inline int getQuantTransacoes() const { return this->quantidadeTransacoes; };

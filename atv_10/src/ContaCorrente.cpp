@@ -1,6 +1,6 @@
 #include "../include/ContaCorrente.hpp"
 
-std::map<int, bool> ContaCorrente::usedIds;
+int ContaCorrente::lastID = 1;
 
 void ContaCorrente::saca(double valor) {
 
@@ -16,13 +16,4 @@ void ContaCorrente::tiraExtrato() const {
               << "Numero da Conta: " << this->getNumeroConta() << std::endl
               << "Saldo: " << this->getSaldo() << std::endl
               << "Quantidade de Transacoes: " << this->getQuantTransacoes() << std::endl;
-}
-
-int ContaCorrente::getNextID() {
-    srand(time(NULL));
-    int new_id = rand() % 1000 + 1;
-    while (usedIds[new_id] == true)
-        new_id = rand() % 1000 + 1;
-    usedIds[new_id] = true;
-    return new_id;
 }

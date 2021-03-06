@@ -5,13 +5,10 @@
 
 class ContaPoupanca : public ContaBancaria {
     double taxaRendimento;
-
-    static std::map<int, bool> usedIds;
-
-    int getNextID();
+    static int lastID;
 
 public:
-    ContaPoupanca(std::string pw, double taxa = 2.5) : ContaBancaria(pw, this->getNextID()), taxaRendimento(taxa){};
+    ContaPoupanca(std::string pw, double taxa = 2.5) : ContaBancaria(pw, this->lastID++), taxaRendimento(taxa){};
     virtual ~ContaPoupanca(){};
 
     inline double getTaxaRendimento() const { return this->taxaRendimento; }
