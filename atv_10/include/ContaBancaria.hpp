@@ -11,29 +11,23 @@ class ContaBancaria {
     int numero;
     double saldo;
 
-    static std::map<int, bool> usedIds;
-
-    int getNextID();
+protected:
     void setSenha(std::string newPW);
+    void sacarSaldo(double valor);
+    void adicionaAoSaldo(double addS);
 
 public:
-    ContaBancaria(std::string pw) : numero(getNextID()), senha(pw), saldo(0){};
+    ContaBancaria(std::string pw, int conta) : senha(pw), numero(conta), saldo(0){};
 
     void alteraSenha();
 
     virtual void saca(double valor) = 0;
     virtual void deposita(double valor) = 0;
     virtual void tiraExtrato() const = 0;
-};
 
-int ContaBancaria::getNextID() {
-    srand(time(NULL));
-    int new_id = rand() % 1000 + 1;
-    while (usedIds[new_id] == true)
-        new_id = rand() % 1000 + 1;
-    usedIds[new_id] = true;
-    return new_id;
-}
+    inline int getNumeroConta() const { return this->numero; }
+    inline double getSaldo() const { return this->saldo; }
+};
 
 void ContaBancaria::alteraSenha() {
     std::cout << "***ALTERANDO SENHA***" << std::endl
@@ -51,7 +45,7 @@ void ContaBancaria::alteraSenha() {
             std::cout << "Senha atualizada com sucesso!" << std::endl;
         } else {
             tentativas++;
-            std::cout << "Senha incorreta! Tentativas restantes: " << 3 - tentativas << std::endl
+            std::cout << "Senha incorreta! Tentativas restantes: " << 3 - tentativas << std::endl;
         }
     }
 }
@@ -59,5 +53,13 @@ void ContaBancaria::alteraSenha() {
 void ContaBancaria::setSenha(std::string newPW) {
     this->senha = newPW;
 };
+
+void ContaBancaria::adicionaAoSaldo(double addToSaldo) { this->saldo += addToSaldo; }
+
+void ContaBancaria::sacarSaldo(double valor) {
+    if (valor > 0 && this->getSaldo() >= valor) {
+        this->saldo -= valor;
+    }
+}
 
 #endif

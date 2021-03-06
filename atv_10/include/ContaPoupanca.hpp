@@ -1,19 +1,23 @@
 #ifndef CONTA_POUP_H
 #define CONTA_POUP_H
 
-#include "ContaBacaria.hpp"
+#include "ContaBancaria.hpp"
 
-class ContaPoupanca : ContaBancaria {
+class ContaPoupanca : public ContaBancaria {
     double taxaRendimento;
 
+    static std::map<int, bool> usedIds;
+
+    int getNextID();
+
 public:
-    ContaPoupanca(std::string pw, double taxa = 2.5) : ContaBancaria(pw), taxaRendimento(taxa){};
+    ContaPoupanca(std::string pw, double taxa = 2.5) : ContaBancaria(pw, this->getNextID()), taxaRendimento(taxa){};
 
     inline double getTaxaRendimento() const { return this->taxaRendimento; }
 
-    virtual void saca(double valor);
-    virtual void deposita(double valor);
-    virtual void tiraExtrato() const;
+    void saca(double valor) override;
+    void deposita(double valor) override;
+    void tiraExtrato() const override;
 };
 
 #endif
