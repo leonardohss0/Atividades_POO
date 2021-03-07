@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "./include/ContaCorrente.hpp"
 #include "./include/ContaPoupanca.hpp"
@@ -36,7 +36,17 @@ int main() {
             std::cout << "Escolha do tipo de conta invalida" << std::endl;
         }
     }
-    // após as contas terem sido criadas, informe a taxa de rendimento de cada ContaPoupanca armazenada.
-    // realize saques, depósitos e extratos nestas contas.
-    // imprima a quantidade de transações realizadas nas contas correntes e as taxas de rendimento das contas poupança.
+
+    std::cout << "\nTaxa de Rendimento das Contas Poupanca: 2.5%\n\n" << std::endl;
+
+    for (int index = 0; index < contasVec.size(); ++index) {
+        contasVec[index]->deposita(100 + contasVec[index]->getNumeroConta());
+        contasVec[index]->saca(50);
+    }
+
+    for (int index = 0; index < contasVec.size(); ++index) {
+        contasVec[index]->tiraExtrato();
+        std::cout << std::endl;
+    }
+
 }

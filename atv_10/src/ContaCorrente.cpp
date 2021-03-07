@@ -3,12 +3,15 @@
 int ContaCorrente::lastID = 1;
 
 void ContaCorrente::saca(double valor) {
-
-    this->sacarSaldo(valor);
+    if (valor > 0 && this->getSaldo() >= valor) {
+        this->sacarSaldo(valor);
+        this->quantidadeTransacoes++;
+    }
 }
 void ContaCorrente::deposita(double valor) {
     if (valor > 0) {
         this->adicionaAoSaldo(valor);
+        this->quantidadeTransacoes++;
     }
 }
 void ContaCorrente::tiraExtrato() const {

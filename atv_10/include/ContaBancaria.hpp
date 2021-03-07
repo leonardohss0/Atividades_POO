@@ -15,7 +15,7 @@ protected:
     void setSenha(std::string newPW) {
         this->senha = newPW;
     };
-    ;
+    
     void sacarSaldo(double valor) {
         if (valor > 0 && this->getSaldo() >= valor) {
             this->saldo -= valor;
